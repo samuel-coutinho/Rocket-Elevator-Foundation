@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'interventions/new'
   mount RailsAdmin::Engine => '/backoffice', as: 'rails_admin'
   resources :addresses, only: %i[index]
 

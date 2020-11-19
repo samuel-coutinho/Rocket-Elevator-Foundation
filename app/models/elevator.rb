@@ -3,6 +3,7 @@ require 'twilio-ruby'
 
 class Elevator < ApplicationRecord
   belongs_to :column
+  has_many :interventions
   before_update :messageSms
   before_update :slack_notifier_messsage
 

@@ -1,7 +1,9 @@
 class Customer < ApplicationRecord    
   has_many :buildings
+  has_many :interventions
   has_one :address, dependent: :delete
   belongs_to :user, optional: true
+  accepts_nested_attributes_for :buildings, allow_destroy: true
 
   after_commit :dropbox_API
 

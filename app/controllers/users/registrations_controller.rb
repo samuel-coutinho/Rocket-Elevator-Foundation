@@ -13,12 +13,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
 
-    NewGoogleRecaptcha.human?(
-      params[:new_google_recaptcha_token],
-      'user',
-      NewGoogleRecaptcha.minimum_score,
-      resource
-    ) && resource.save
+    # NewGoogleRecaptcha.human?(
+    #   params[:new_google_recaptcha_token],
+    #   'user',
+    #   NewGoogleRecaptcha.minimum_score,
+    #   resource
+    # ) && resource.save
 
     yield resource if block_given?
     if resource.persisted?
