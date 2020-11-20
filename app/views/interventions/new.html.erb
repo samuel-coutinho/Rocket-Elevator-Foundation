@@ -1,42 +1,43 @@
-<div class="container p-3 my-3 border" style="background-color: lightsteelblue; vertical-align: top;">
-
-    <div class="card-block" style="background-color: lightsteelblue; vertical-align: top;">
-        <div class="row">
-            <div class="col-md-6">	
 
                 <h1>Interventions#new</h1>
-                <br>
-                
+                <br>                
                     <%# <%=select_tag(:id, options_from_collection_for_select(Employee.all, :user_id, :first_name), include_blank: true) %>
-                <br>
+                <br>                
 
-                                
-                <%= label_tag(:id, "Select a Employee:") %>
-                <%= collection_select(:id, nil, Employee.all, :user_id, :first_name, include_blank: true, :class => "employee_selection") %>                
-                <br>
-                <%= label_tag(:id, "Select a Customer:") %>
-                <%= collection_select(:id, nil,  Customer.all, :user_id, :company_name, include_blank: true, :class => "customer_selection") %>
-                <br>
-                <%= label_tag(:id, "Select a Building:") %>
-                <%= collection_select(:id, nil,  Building.all, :id, :id, prompt: "Select something", :class => "building_selection") %>
-                <br>
                 
-                <div class="form">
-                    <!--
-                    <%= label_tag(:id, "Select a Battery:") %>
-                    <%= collection_select(:id, nil,  Battery.all, :id, :id, include_blank: true) %>
-                    <br>
-                    <%= label_tag(:id, "Select a Column:") %>
-                    <%= collection_select(:id, nil,  Column.all, :id, :id, include_blank: true) %>
-                    <br>
-                    <%= label_tag(:id, "Select a Elevator:") %>
-                    <%= collection_select(:id, nil,  Elevator.all, :serial_number, :serial_number, include_blank: true) %>
-                    -->
-                </div>
-            </div>
+                <%= label_tag(:id, "Select a Customer:") %>
+                <%= collection_select(:customer, :id, Customer.all, :user_id, :company_name, include_blank: true, :class => "customer_selection") %>
+                                        
+                <%= label_tag(:id, "Select a Building:") %>
+                <%= collection_select(:building, :id, @buildings, :id, :id, prompt: "Select something", :class => "building_selection") %>  
 
-                        
-        </div>		
-    </div>				
-</div>
+        <script>
+            $(document).ready(function() {
+            console.log("hello-----------------")
+                $('#customer_id').change(function() {
+                    console.log("customer_selection----------------")
+                    $.ajax({
+                        url: "<%= update_buildings_path %>",
+                    data: {
+                        customer_id: $('#customer_id').val()
+                    },
+                    dataType: "json",
+                    success: function (response)
+                    {
+                        console.log(response);
+                        var building = response["building"];
+                        $("#building_id").empty(); // Empty the chosen dropdown
+                        $("#building_id").append('<option>Select a building</option>');
+                        for(var i = 0; i < building.length; i++){
+                            $("#building_id").append('<option value="' + building[i]["id"] + '"> building id: ' +building[i]["id"] + '</option>');
+                        }
+                    }
+                    });
+                });
+            });
+
+        </script>
+
+                         
+ 
 

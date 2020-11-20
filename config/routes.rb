@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
   resources :leads
 
+  resources :customers
+  resources :buildings
+
   resources :quotes, only: %i[user_quotes new create]
 
   root to: 'static_pages#index'

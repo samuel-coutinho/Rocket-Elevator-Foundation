@@ -28,5 +28,10 @@
 //= require chartkick
 //= require Chart.bundle
 //= require rails_admin/themes/material/ui.js
-//= require_tree .
 //= require interventions.js.coffee
+//= require jquery3
+//= require popper
+//= require bootstrap
+//= require bootstrap.min.js
+//= require bootstrap.min
+//= require_tree .

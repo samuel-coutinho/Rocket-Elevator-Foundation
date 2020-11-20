@@ -16,14 +16,28 @@
 #       success: (data, textStatus, jqXHR) ->
 #         console.log("Dynamic country select OK!")
 
-$(document).ready ->
-  $(".customer_selection").on "change", ->
-    $.ajax
-      url: "/interventions/get_buildings"
-      type: "GET"
-      dataType: "script"
-      data:
-        user_id: $('.customer_selection option:selected').val()
+# $(document).ready ->
+#   $(".customer_selection").on "change", ->
+#     $.ajax
+#       url: "/interventions/get_buildings"
+#       type: "GET"
+#       dataType: "script"
+#       data:
+#         customer_id: $('.customer_selection option:selected').val()
+
+# $(document).ready ->
+#   $(".customer_selection").on "change", ->
+#     $.ajax
+#       url: "/interventions/get_buildings"
+#       type: "GET"
+#       dataType: "script"
+#       data:
+#         customer_id: $('.customer_selection option:selected').val()
+#     $('.building_selection').empty();
+#     $('.building_selection').append( $('<option>Select the Contact</option>'));
+#     <% @buildings.each do |building| %>
+#     $('.building_selection').append($('<option value="<%= building.id %>"><%= building.customer_id %></option>'));
+#     <% end %>
 
 # jQuery ->
 #     $(document).ready ->
