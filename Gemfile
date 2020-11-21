@@ -124,7 +124,6 @@ end
 
 #twilio gem
 gem "twilio-ruby"
-gem "figaro"
 
 #sendgrid gem
 gem "sendgrid-ruby"
@@ -134,3 +133,6 @@ gem "sendgrid-ruby"
 gem "slack-notifier"
 
 gem 'formtastic', '~> 3.0'
+
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
