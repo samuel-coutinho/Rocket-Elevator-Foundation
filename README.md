@@ -2,10 +2,15 @@
 
 <h2>Week 9 - Consolidation</h2>
 
+Link to the REST API repository : https://github.com/samuel-coutinho/Rocket_Elevators_REST_API
+
 The website deployed on CodeBoxx servers can be found at http://samcoutinho.net/ . In order to visit the "backoffice" section, you will need to login with the following information: 
 
 - username: admin@admin.com 
 - password: admin123
+
+The Interventions form has not been completed. The development version can be found at:
+- https://samcoutinho.net/interventions/new
 
 ## How to try out the integrations:
 
