@@ -8,7 +8,7 @@ require "capistrano/deploy"
 #
 # require "capistrano/scm/hg"
 # install_plugin Capistrano::SCM::Hg
-# or*
+# or
 # require "capistrano/scm/svn"
 # install_plugin Capistrano::SCM::Svn
 # or
