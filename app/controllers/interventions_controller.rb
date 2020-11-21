@@ -11,20 +11,21 @@ class InterventionsController < ApplicationController
     @elevator = Elevator.new
     @employee = Employee.new    
   end
-end
-
-def create
-  # your code/ logic goes here
-  return render json: { random_param_name: "Intervention created successfully!”}
-end
 
 
-private
-def customer_params
-  params.require(:customer).permit(
-    :user_id,
-    :company_name,
-    :buildings_attributes => [:id]
-    #building_attributes: [:customer_id, :address_id, :id]
-  )
+  def create
+    # your code/ logic goes here
+    return render json: { random_param_name: "Intervention created successfully!"}
+  end
 end
+
+
+# private
+# def customer_params
+#   params.require(:customer).permit(
+#     :user_id,
+#     :company_name,
+#     :buildings_attributes => [:id]
+#     #building_attributes: [:customer_id, :address_id, :id]
+#   )
+# end

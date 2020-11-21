@@ -368,6 +368,24 @@ def create_customer randCustomerCreation
 
 end
 
+def create_intervention
+    for i in 1..10 do
+        Intervention.create(
+            employee_id: i,
+            battery_id: i,
+            column_id: i,
+            elevator_id: i,
+            building_id: i,
+            author: i,
+            created_at: i,
+            result: "Test",
+            report: "Test",
+            status:["null", "Pending"].sample  
+        )
+    end
+end
+
+
 create_customer randCustomerCreation
 create_employee randEmployeeCreation
 

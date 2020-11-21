@@ -6,5 +6,5 @@ class Intervention < ApplicationRecord
     belongs_to :elevator
     belongs_to :building
 
-    validates :battery_id, :column_id, :elevator_id, :employee_id, allow_blank: true
+   #validates :battery_id, :column_id, :elevator_id, :employee_id, allow_blank: true
 end
