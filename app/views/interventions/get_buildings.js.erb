@@ -1,0 +1,12 @@
+<%# $(document).ready ->
+  $(".customer_selection").on "change", ->
+    $.ajax
+      url: "/interventions/get_buildings"
+      type: "GET"
+      dataType: "script"
+      data:
+        customer_id: $('.customer_selection option:selected').val()
+    $('.building_selection').empty();
+    $('.building_selection').append( $('<option>Select the Contact</option>'));
+    <% @buildings.each do |building| %>
+    

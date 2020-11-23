@@ -20,11 +20,13 @@ Lead.destroy_all
 Quote.destroy_all
 Column.destroy_all
 Elevator.destroy_all
+Intervention.destroy_all
 
 DatabaseCleaner.clean_with(:truncation)
 
 randCustomerCreation = 20
 randEmployeeCreation = 21
+
 
 def seed_image
     File.open(File.join(Rails.root, "/app/assets/images/noYou/image.png"))
@@ -202,6 +204,23 @@ def create_employee randEmployeeCreation
     end
 end
 
+def create_intervention randCustomerCreation
+    for i in 1..randCustomerCreation do
+        tmp_intervention = Intervention.create(
+            customer_id: i,
+            employee_id: i,
+            battery_id: i,
+            column_id: i,
+            elevator_id: i,
+            building_id: i,
+            author: tmp_user.id,
+            result: null,
+            report: null,
+            status: ["Pending", "null", " InProgress"].sample,       
+        )    
+    end   
+end 
+
 def create_customer randCustomerCreation
     for i in 1..randCustomerCreation do
         addressy = Addressy::US.fetch(10)
@@ -301,7 +320,7 @@ def create_customer randCustomerCreation
                 information: Faker::Lorem.sentence(word_count: 6),
                 notes: Faker::Lorem.sentence(word_count: rand(3..12).floor),
                 created_at: Time.at((tmp_building.created_at.to_f - Time.local(2020, 7, 8).to_f)*rand + Time.local(2020, 7, 8).to_f)
-            )
+            )            
 
             for g in 1..rand(1..6) do
                 tmp_column = Column.create(

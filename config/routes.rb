@@ -1,9 +1,24 @@
 Rails.application.routes.draw do
   get 'interventions/new'
+  get 'interventions/update_buildings', as: 'update_buildings'
+  get 'interventions/show'
+
+
+
   mount RailsAdmin::Engine => '/backoffice', as: 'rails_admin'
+
+  resources :interventions do
+    collection do
+      get 'get_buildings', to: "interventions#get_buildings"
+    end 
+  end
+
   resources :addresses, only: %i[index]
 
   resources :leads
+
+  resources :customers
+  resources :buildings
 
   resources :quotes, only: %i[user_quotes new create]
 
