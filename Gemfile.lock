@@ -154,6 +154,7 @@ GEM
     dropbox_api (0.1.18)
       faraday (<= 1.0)
       oauth2 (~> 1.1)
+    ed25519 (1.2.4)
     erubi (1.10.0)
     eventmachine (1.2.7)
     excon (0.78.0)
