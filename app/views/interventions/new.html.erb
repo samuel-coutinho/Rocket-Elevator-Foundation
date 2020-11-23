@@ -10,29 +10,21 @@
                 <%# <%=select_tag(:id, options_from_collection_for_select(Employee.all, :user_id, :first_name), include_blank: true) %>
                 <br>
                 <%= label_tag(:id, "Select a Employee:") %>
-                <%= collection_select(:id, :employee_id, Employee.all, :user_id, :first_name, include_blank: true) %>                
+                <%= collection_select(:id, :employee, Employee.all, :user_id, :first_name, include_blank: true) %>                
                 <br>
                                     
                 <%= label_tag(:id, "Select a Customer:") %>
-                <%= collection_select(:customer_id, Customer.all, :user_id, :company_name, include_blank: true,) %>
+                <%= collection_select(:customer, :id, Customer.all, :user_id, :company_name, include_blank: true,) %>
                 <br>
                 <%= label_tag(:id, "Select a Building:") %>
-                <%= collection_select(:customer_id, Building.new, :id, :id, prompt: "Select something") %>
-                <br>
-                <%= label_tag(:id, "Select a Battery:") %>
-                <%= collection_select(nil,  Battery.all, :id, :id, include_blank: true) %>
-                <br>
-                <%= label_tag(:id, "Select a Column:") %>
-                <%= f.collection_select(nil,  Column.all, :id, :id, include_blank: true) %>
-                <br>
-                <%= label_tag(:id, "Select a Elevator:") %>
-                <%= f.collection_select(nil,  Elevator.all, :serial_number, :serial_number, include_blank: true) %>
-                <%= f.submit %>
-                <% end %>
+                <%= collection_select(:building, :id, @buildings, :id, :id, prompt: "Select something") %>
+                <br>     
 
             </div>
-
-
+                  
+        </div>		
+    </div>				
+</div>
 
             <script>
                 $(document).ready(function() {
@@ -44,12 +36,8 @@
                             data: {
                                 customer_id: $('#customer_id').val()
                             },
-                            dataType: "json"
-                        });
-                    });
-                });
-
-                success: function (response)
+                            dataType: "json",
+                            success: function (response)
                                 {
                                     console.log(response);
                                     var building = response["building"];
@@ -59,11 +47,13 @@
                                         $("#building_id").append('<option value="' + building[i]["id"] + '"> building id: ' +building[i]["id"] + '</option>');
                                     }
                                 }
+                        });
+                    });
+                });
+
+                
             </script>
             
 
-                        
-        </div>		
-    </div>				
-</div>
+      
 

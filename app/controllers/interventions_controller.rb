@@ -23,10 +23,10 @@ class InterventionsController < ApplicationController
   end
 
   def update_buildings
-    @customer = Customer.find params[:customer_id]    
+    @customer = Customer.find(params[:customer_id])    
     @buildings = @customer.buildings
     respond_to do |format|
-      format.json   {render :json => {building: @buildings}}
+      format.json {render :json => {building: @buildings}}
     end
   end
 
