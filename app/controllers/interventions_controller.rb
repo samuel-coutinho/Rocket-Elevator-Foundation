@@ -60,4 +60,3 @@ end
 #       #building_attributes: [:customer_id, :address_id, :id]
 #     )
 #   end
-

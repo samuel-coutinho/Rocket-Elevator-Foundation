@@ -3,15 +3,17 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server '99.79.123.96', user: 'ubuntu', roles: %w[app db web] # server "db.example.com", user: "deploy", roles: %w{db}
+server "99.79.123.96", user: "ubuntu", roles: %w{app db web}
+# server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
+# server "db.example.com", user: "deploy", roles: %w{db}
 app = ENV['APP']
 app = 'SamuelCoutinho' if app.nil? or app.empty?
 set :application, app
-set :rails_env, 'development'
-set :bundle_without, 'production'
+set :rails_env, "development"
+set :bundle_without, "production"
 set :deploy_to, "/home/ubuntu/apps/#{app}"
-set :linked_dirs, %w[tmp/pids tmp/sockets log]
-set :linked_files, %w[config/database.yml config/dwh_db.yml config/application.yml]
+set :linked_dirs, %w{tmp/pids tmp/sockets log}
+set :linked_files, %w{config/database.yml}
 
 # role-based syntax
 # ==================
@@ -21,9 +23,11 @@ set :linked_files, %w[config/database.yml config/dwh_db.yml config/application.y
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :app, %w[ubuntu@99.79.123.96]
-role :web, %w[ubuntu@99.79.123.96]
-role :db, %w[ubuntu@99.79.123.96]
+role :app, %w{ubuntu@99.79.123.96}
+role :web, %w{ubuntu@99.79.123.96}
+role :db,  %w{ubuntu@99.79.123.96}
+
+
 
 # Configuration
 # =============
@@ -32,6 +36,8 @@ role :db, %w[ubuntu@99.79.123.96]
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
+
+
 
 # Custom SSH Options
 # ==================
@@ -58,4 +64,3 @@ role :db, %w[ubuntu@99.79.123.96]
 #     forward_agent: false,
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
-#   }

@@ -1,42 +1,16 @@
 # Rocket Elevators Information System
 
-<h2>Week 7 - APIs</h2>
+<h2>Week 9 - Consolidation</h2>
 
-## Members of this week's team
-- **[Jorge Marcoux](https://github.com/jorgemarcoux)**
-- **[Samuel Coutinho](https://github.com/samuel-coutinho)**
-- **[Olivier Beachesne](https://github.com/overview76)**
-- **[William Sinclair](https://github.com/WilliamSinclairF)**
+Link to the REST API repository : https://github.com/samuel-coutinho/Rocket_Elevators_REST_API
 
-<p>
-This week we learned to use the excellent service APIs that will give our client's system new capabilities. The APIs we use are:</p>
-<ol>
-	<li><b>Google Maps</b> for geolocalisation</li>
-	<li><b>Twilio</b> to send SMS updates when certain events occur</li>
-	<li><b>Slack</b> to send updates to the Slack elevator maintenance channel</li>
-	<li><b>Dropbox</b> to store files in the cloud</li>
-	<li><b>Sendgrid</b> to send emails to our leads</li>
-	<li><b>IBM Watson</b> to create a customized welcome message</li>
-	<li><b>ZendDesk</b> to create tickets for our sales department and customer service when new quotes are created as well as when a contact form is sent</li>
-</ol>
-
-<h4>Gems used:</h4>
-<ol>
-	<li>Excon</li>
-	<li>Figaro</li>
-	<li>Dropbox_api</li>
-	<li>Geocoder</li>
-	<li>Ibm_watson</li>
-	<li>New_google_recaptcha</li>
-	<li>Twilio-ruby</li>
-	<li>Sendgrid-ruby</li>
-  <li>Slack-notifier</li>
-</ol>
-
-Our website deployed on CodeBoxx servers can be found at http://marcouxs.com/ . In order to visit the "backoffice" section, you will need to login with the following information: 
+The website deployed on CodeBoxx servers can be found at http://samcoutinho.net/ . In order to visit the "backoffice" section, you will need to login with the following information: 
 
 - username: admin@admin.com 
 - password: admin123
+
+The Interventions form has not been completed. The development version can be found at:
+- https://samcoutinho.net/interventions/new
 
 ## How to try out the integrations:
 
