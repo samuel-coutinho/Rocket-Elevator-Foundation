@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   get 'interventions/new'
   get 'interventions/update_buildings', as: 'update_buildings'
+  get 'interventions/update_batteries', as: 'update_batteries'
+  get 'interventions/update_columns', as: 'update_columns'
+  get 'interventions/update_elevators', as: 'update_elevators'
+  get 'interventions/update_element_path', as: 'update_element_path'
+ 
+
+  
   get 'interventions/show'
 
 

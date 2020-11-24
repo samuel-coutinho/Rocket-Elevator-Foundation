@@ -4,21 +4,28 @@
         <div class="row">
             <div class="col-md-6">	
 
-                <h1>Interventions#new</h1>
-                <br>               
+                <h1>Interventions Form</h1>
 
-                <%# <%=select_tag(:id, options_from_collection_for_select(Employee.all, :user_id, :first_name), include_blank: true) %>
-                <br>
                 <%= label_tag(:id, "Select a Employee:") %>
                 <%= collection_select(:id, :employee, Employee.all, :user_id, :first_name, include_blank: true) %>                
-                <br>
+                
                                     
                 <%= label_tag(:id, "Select a Customer:") %>
                 <%= collection_select(:customer, :id, Customer.all, :user_id, :company_name, include_blank: true,) %>
-                <br>
+                
                 <%= label_tag(:id, "Select a Building:") %>
-                <%= collection_select(:building, :id, @buildings, :id, :id, prompt: "Select something") %>
-                <br>     
+                <%= collection_select(:building, :id, @buildings, :id, :id, include_blank: true) %>
+                <%= label_tag(:id, "Select a Battery:") %>
+
+                <%= collection_select(:battery, :id, @batteries, :id, :id, include_blank: true) %>
+                             
+                <%= label_tag(:id, "Select a Column:") %>
+                <%= collection_select(:column, :id, @columns, :id, :id, include_blank: true) %>
+                            
+                <%= label_tag(:id, "Select a Elevator:") %>
+                <%= collection_select(:elevator, :id, @elevators, :id, :id, include_blank: true) %> 
+
+                <%= submit_tag value="Submit"%>         
 
             </div>
                   
@@ -27,8 +34,7 @@
 </div>
 
             <script>
-                $(document).ready(function() {
-                    console.log("hello-----------------")
+                $(document).ready(function() {                    
                         $('#customer_id').change(function() {
                             console.log("customer_selection----------------")
                             $.ajax({
@@ -50,6 +56,75 @@
                         });
                     });
                 });
+
+                $(document).ready(function() {                    
+                        $('#building_id').change(function() {
+                            console.log("battery_selection----------------")
+                            $.ajax({
+                                url: "<%= update_batteries_path %>",
+                            data: {
+                                building_id: $('#building_id').val()
+                            },
+                            dataType: "json",
+                            success: function (response)
+                                {
+                                    console.log(response);
+                                    var battery = response["battery"];
+                                    $("#battery_id").empty(); // Empty the chosen dropdown
+                                    $("#battery_id").append('<option>Select a battery</option>');
+                                    for(var i = 0; i < battery.length; i++){
+                                        $("#battery_id").append('<option value="' + battery[i]["id"] + '"> battery id: ' +battery[i]["id"] + '</option>');
+                                    }
+                                }
+                        });
+                    });
+                });
+
+                $(document).ready(function() {                    
+                        $('#battery_id').change(function() {
+                            console.log("column_selection----------------")
+                            $.ajax({
+                                url: "<%= update_columns_path %>",
+                            data: {
+                                battery_id: $('#battery_id').val()
+                            },
+                            dataType: "json",
+                            success: function (response)
+                                {
+                                    console.log(response);
+                                    var column = response["column"];
+                                    $("#column_id").empty(); // Empty the chosen dropdown
+                                    $("#column_id").append('<option>Select a column</option>');
+                                    for(var i = 0; i < column.length; i++){
+                                        $("#column_id").append('<option value="' + column[i]["id"] + '"> column id: ' +column[i]["id"] + '</option>');
+                                    }
+                                }
+                        });
+                    });
+                });
+                
+                $(document).ready(function() {                    
+                        $('#column_id').change(function() {
+                            console.log("column_selection----------------")
+                            $.ajax({
+                                url: "<%= update_elevators_path %>",
+                            data: {
+                                column_id: $('#column_id').val()
+                            },
+                            dataType: "json",
+                            success: function (response)
+                                {
+                                    console.log(response);
+                                    var elevator = response["elevator"];
+                                    $("#elevator_id").empty(); // Empty the chosen dropdown
+                                    $("#elevator_id").append('<option>Select a elevator</option>');
+                                    for(var i = 0; i < elevator.length; i++){
+                                        $("#elevator_id").append('<option value="' + elevator[i]["id"] + '"> elevator id: ' +elevator[i]["id"] + '</option>');
+                                    }
+                                }
+                        });
+                    });
+                });  
 
                 
             </script>
