@@ -1,25 +1,25 @@
 class InterventionsController < ApplicationController
 
-  # def new
-  #   #@user_options = Customer.all.map{ |u| [ u.company_name, u.user_id ] }
-  #   @customer = Customer.new
-  #   #@customer.buildings.build
-  #   @building = Building.new  
-  #   @battery  = Battery.new
-  #   @column   = Column.new
-  #   @elevator = Elevator.new
-  #   @employee = Employee.new    
-  # end
+  
 
   def new
-    @customers = Customer.all       
-    #@customer = Customer.new    
+    @employee = Employee.all
+
+    @customers = Customer.all 
     @buildings = Building.all
-    @employee = Employee.new  
+    @employee = Employee.all  
+    @batteries  = Battery.all
+    @columns   = Column.all
+    @elevators = Elevator.all
+    @employee = Employee.all  
+    
   end
 
-  def show
-    #@building = Building.find_by("id = ?", params[:customer][:customer_id])
+  def show   
+  end
+
+  def create   
+
   end
 
   def update_buildings
@@ -30,33 +30,37 @@ class InterventionsController < ApplicationController
     end
   end
 
-  # def get_buildings
-  #   @customer = Customer.find params[:customer_id]
-  #   #@buildings = Building.find_all_by_customer_id(params[:customer_id])
-  #   @buildings = @customer.buildings
-  #   respond_to do |format|
-  #     format.js
-  #   end
-  # end
+  def update_batteries
+    @buildings = Building.find(params[:building_id])    
+    @batteries =  @buildings.batteries
+    respond_to do |format|
+      format.json {render :json => {battery: @batteries}}
+    end
+  end
 
-  # def create
-  #   @customer = Customer.find params[:customer_id]
-  #   #@buildings = Building.find_all_by_customer_id(params[:customer_id])
-  #   @buildings = @customer.buildings
+  def update_columns
+    @batteries = Battery.find(params[:battery_id])    
+    @columns = @batteries.columns
+    respond_to do |format|
+      format.json {render :json => {column: @columns}}
+    end
+  end
+
+  def update_elevators
+    @columns = Column.find(params[:column_id])    
+    @elevators = @columns.elevators
+    respond_to do |format|
+      format.json {render :json => {elevator: @elevators}}
+    end
+  end
+
+  # def update_element
+  #   @parent_element = parent_element.find(params[:parent_element_id])    
+  #   @elements = @parent_element.elements
   #   respond_to do |format|
-  #     format.js
-  #   end
-  # end
+  #     format.json {render :json => {element: @elements}}
+  #   end 
+  # end  
 end
 
 
- 
-#  private
-#   def customer_params
-#     params.require(:customer).permit(
-#       :user_id,
-#       :company_name,
-#       :buildings_attributes => [:id]
-#       #building_attributes: [:customer_id, :address_id, :id]
-#     )
-#   end
