@@ -39,6 +39,7 @@ gem 'dropbox_api'
 #BOOTSTRAP
 gem 'bootstrap', '~> 4.4.1'
 
+
 # USER RELATED
 gem 'devise'
 gem 'simple_form'
