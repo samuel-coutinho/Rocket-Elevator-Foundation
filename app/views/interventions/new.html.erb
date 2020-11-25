@@ -1,31 +1,39 @@
 <div class="container p-3 my-3 border" style="background-color: lightsteelblue; vertical-align: top;">
 
     <div class="card-block" style="background-color: lightsteelblue; vertical-align: top;">
-        <div class="row">
-            <div class="col-md-6">	
+        <div class="row">           
 
+            
+            <div class="col-sm-6">	
                 <h1>Interventions Form</h1>
+                <%= simple_form_for :search, url: {action: "create"} do |f| %>
+            
+                    <%= label_tag(:id, "Select a Employee:") %>
+                    <%= collection_select(:employee, :id, Employee.all, :user_id, :first_name, prompt: "None", include_blank: true) %>                
+                    
+                                        
+                    <%= label_tag(:id, "Select a Customer:") %>
+                    <%= collection_select(:customer, :id, Customer.all, :user_id, :company_name, include_blank: true,) %>
+                    
+                    <%= label_tag(:id, "Select a Building:") %>
+                    <%= collection_select(:building, :id, @buildings, :id, :id, include_blank: true) %>
 
-                <%= label_tag(:id, "Select a Employee:") %>
-                <%= collection_select(:id, :employee, Employee.all, :user_id, :first_name, include_blank: true) %>                
-                
-                                    
-                <%= label_tag(:id, "Select a Customer:") %>
-                <%= collection_select(:customer, :id, Customer.all, :user_id, :company_name, include_blank: true,) %>
-                
-                <%= label_tag(:id, "Select a Building:") %>
-                <%= collection_select(:building, :id, @buildings, :id, :id, include_blank: true) %>
-                <%= label_tag(:id, "Select a Battery:") %>
+                    <%= label_tag(:id, "Select a Battery:") %>
+                    <%= collection_select(:battery, :id, @batteries, :id, :id, include_blank: true) %>
+                                
+            </div>
+            <div class="col-sm-6">
+                    <%= label_tag(:id, "Select a Column:") %>
+                    <%= collection_select(:column, :id, @columns, :id, :id, prompt: "None", include_blank: true) %>
+                                
+                    <%= label_tag(:id, "Select a Elevator:") %>
+                    <%= collection_select(:elevator, :id, @elevators, :id, :id, prompt: "None", include_blank: true) %> 
 
-                <%= collection_select(:battery, :id, @batteries, :id, :id, include_blank: true) %>
-                             
-                <%= label_tag(:id, "Select a Column:") %>
-                <%= collection_select(:column, :id, @columns, :id, :id, include_blank: true) %>
-                            
-                <%= label_tag(:id, "Select a Elevator:") %>
-                <%= collection_select(:elevator, :id, @elevators, :id, :id, include_blank: true) %> 
+                    <%= label_tag(:description, "Description:") %>
+                    <%= text_area_tag(:report) %>
 
-                <%= submit_tag value="Submit"%>         
+                    <%= submit_tag "Create"%>
+                <% end %>         
 
             </div>
                   
@@ -94,7 +102,7 @@
                                     console.log(response);
                                     var column = response["column"];
                                     $("#column_id").empty(); // Empty the chosen dropdown
-                                    $("#column_id").append('<option>Select a column</option>');
+                                    $("#column_id").append('<option>None</option>');
                                     for(var i = 0; i < column.length; i++){
                                         $("#column_id").append('<option value="' + column[i]["id"] + '"> column id: ' +column[i]["id"] + '</option>');
                                     }
@@ -117,7 +125,7 @@
                                     console.log(response);
                                     var elevator = response["elevator"];
                                     $("#elevator_id").empty(); // Empty the chosen dropdown
-                                    $("#elevator_id").append('<option>Select a elevator</option>');
+                                    $("#elevator_id").append('<option>None</option>');
                                     for(var i = 0; i < elevator.length; i++){
                                         $("#elevator_id").append('<option value="' + elevator[i]["id"] + '"> elevator id: ' +elevator[i]["id"] + '</option>');
                                     }

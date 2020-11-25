@@ -4,11 +4,10 @@ Rails.application.routes.draw do
   get 'interventions/update_batteries', as: 'update_batteries'
   get 'interventions/update_columns', as: 'update_columns'
   get 'interventions/update_elevators', as: 'update_elevators'
-  get 'interventions/update_element_path', as: 'update_element_path'
- 
-
+  get 'interventions/update_element_path', as: 'update_element_path'  
+  #post 'interventions/create', as: 'create_path'
   
-  get 'interventions/show'
+  get 'interventions/new', as: 'new_path'
 
 
 
@@ -23,6 +22,7 @@ Rails.application.routes.draw do
   resources :addresses, only: %i[index]
 
   resources :leads
+  resources :employees
 
   resources :customers
   resources :buildings
@@ -46,6 +46,7 @@ Rails.application.routes.draw do
 
   get 'my_quotes' => 'quotes#user_quotes', as: :my_quotes
   get 'my_leads' => 'leads#user_leads', as: :my_leads
+ # get 'my_interventions' => 'interventions#new', as: :my_interventions
 
   resource :messages do
     collection { post 'reply' }
