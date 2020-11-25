@@ -1,4 +1,4 @@
-class InterventionsController < ApplicationController
+class InterventionsController < ApplicationController 
   
 
   def new
@@ -20,7 +20,6 @@ class InterventionsController < ApplicationController
     # @intevention.author
     # @intevention.result
     # @intevention.report
-
     #@intervention = Intervention.new
 
     @employee = Employee.new
@@ -44,8 +43,7 @@ class InterventionsController < ApplicationController
     @intervention.battery_id = @battery.id
     @intervention.column_id = @column.id
     @intervention.elevator_id = @elevator.id
-    #@intervention.report = :report
-
+    
 
     @intervention.save
     
@@ -53,7 +51,7 @@ class InterventionsController < ApplicationController
       if @intervention.save
         format.html do
           redirect_to new_path_url, notice: 'Quote created successfully!'
-        end
+        end        
       end
     end
   end
