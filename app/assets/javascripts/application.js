@@ -28,7 +28,6 @@
 //= require chartkick
 //= require Chart.bundle
 //= require rails_admin/themes/material/ui.js
-//= require interventions.js.coffee
 //= require jquery3
 //= require popper
 //= require bootstrap

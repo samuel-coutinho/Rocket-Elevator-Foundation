@@ -1,5 +1,5 @@
 class InterventionsController < ApplicationController 
-  
+  require 'zendesk_api'
 
   def new
     @employees = Employee.all
@@ -14,13 +14,7 @@ class InterventionsController < ApplicationController
   def show   
   end
 
-  def create
-    
-    # @intevention.status = "Pending"
-    # @intevention.author
-    # @intevention.result
-    # @intevention.report
-    #@intervention = Intervention.new
+  def create  
 
     @employee = Employee.new
     @customer = Customer.new 
@@ -42,16 +36,16 @@ class InterventionsController < ApplicationController
     @intervention.building_id = @building.id 
     @intervention.battery_id = @battery.id
     @intervention.column_id = @column.id
-    @intervention.elevator_id = @elevator.id
-    
+    @intervention.elevator_id = @elevator.id    
 
     @intervention.save
+    create_ticket_zendesk  
     
     respond_to do |format|
       if @intervention.save
         format.html do
           redirect_to new_path_url, notice: 'Quote created successfully!'
-        end        
+        end              
       end
     end
   end
@@ -86,16 +80,36 @@ class InterventionsController < ApplicationController
     respond_to do |format|
       format.json {render :json => {elevator: @elevators}}
     end
-  end
-
-  # def update_element
-  #   @parent_element = parent_element.find(params[:parent_element_id])    
-  #   @elements = @parent_element.elements
-  #   respond_to do |format|
-  #     format.json {render :json => {element: @elements}}
-  #   end 
-  # end  
+  end  
 end
+
+def create_ticket_zendesk
+  client = ZendeskAPI::Client.new do |config|
+   config.url = "https://samcoutinhohelp.zendesk.com/api/v2/"
+   config.username = "samcoutinho@yahoo.com.br"
+   config.token = "yNpabEGGno8fJa8S6T52a5Gp3f4Th2V0q4pdbg89"
+  end  
+  ZendeskAPI::Ticket.create!(client, :subject => "New intervention request", :comment => @intervention.to_json, :submitter_id => @intervention.customer_id, :type => "problem")
+end
+
+
+# def create_ticket_zendesk
+#   client = ZendeskAPI::Client.new do |config|
+#     # Mandatory:
+  
+#     config.url = "https://samcoutinho.zendesk.com" # e.g. https://mydesk.zendesk.com/api/v2
+  
+#     # Basic / Token Authentication
+#     config.username = "samcoutinho@yahoo.com.br"
+  
+#     # Choose one of the following depending on your authentication choice
+#     config.token = "XkgTD1t6XzkPvoJqWWVaYf9THLAn4pcBKs5fjNcZ"
+#     #config.password = ""
+#   end
+  
+#   ZendeskAPI::Ticket.create!(client, :subject => @intervention, :comment => { :value => "This is a test" }, :submitter_id => @intervention.customer_id, :priority => "urgent")
+
+# end
 
 private
 
