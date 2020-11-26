@@ -40,6 +40,11 @@
             <li><!-- CONTACT -->
               <%= link_to 'CONTACT', root_path(anchor: "contact"), 'data-turbolinks': false %>
             </li>
+            <% if user_signed_in? %>
+              <li><!-- Interventions Form -->
+                <%= link_to 'INTERVENTION FORM', "/interventions/new" %>
+              </li>
+            <% end %>
             <% if can? :read, Quote %>
               <li><!-- BACKOFFICE -->
                 <%= link_to 'BACKOFFICE', rails_admin_path %>

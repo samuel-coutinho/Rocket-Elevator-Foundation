@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   
   get 'interventions/new', as: 'new_path'
 
+  #get '/INTERVENTION_FORM', as: 'new_path'
+
 
 
   mount RailsAdmin::Engine => '/backoffice', as: 'rails_admin'
@@ -45,8 +47,7 @@ Rails.application.routes.draw do
              }
 
   get 'my_quotes' => 'quotes#user_quotes', as: :my_quotes
-  get 'my_leads' => 'leads#user_leads', as: :my_leads
- # get 'my_interventions' => 'interventions#new', as: :my_interventions
+  get 'my_leads' => 'leads#user_leads', as: :my_leads 
 
   resource :messages do
     collection { post 'reply' }
