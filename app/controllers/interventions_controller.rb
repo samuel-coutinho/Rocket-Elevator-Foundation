@@ -85,9 +85,9 @@ end
 
 def create_ticket_zendesk
   client = ZendeskAPI::Client.new do |config|
-   config.url = ENV["ZENDESK_URL"]
-   config.username = ENV["ZENDESK_USERNAME"]
-   config.token = ENV["ZENDESK_TOKEN"]
+    config.url = ENV["ZENDESK_URL"]
+    config.username = ENV["ZENDESK_USERNAME"]
+    config.token = ENV["ZENDESK_TOKEN"]
   end  
   ZendeskAPI::Ticket.create!(client, :subject => "New intervention request", :comment => @intervention.to_json, :submitter_id => @intervention.customer_id, :type => "problem")
 end

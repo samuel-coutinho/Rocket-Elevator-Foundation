@@ -1,3 +1,8 @@
+<head>
+  
+</head>
+
+
 <div class="container p-3 my-3 border" style="background-color: lightsteelblue; vertical-align: top;">
 
     <div class="card-block" style="background-color: lightsteelblue; vertical-align: top;">
@@ -40,102 +45,100 @@
         </div>		
     </div>				
 </div>
-
-            <script>
-                $(document).ready(function() {                    
-                        $('#customer_id').change(function() {
-                            console.log("customer_selection----------------")
-                            $.ajax({
-                                url: "<%= update_buildings_path %>",
-                            data: {
-                                customer_id: $('#customer_id').val()
-                            },
-                            dataType: "json",
-                            success: function (response)
-                                {
-                                    console.log(response);
-                                    var building = response["building"];
-                                    $("#building_id").empty(); // Empty the chosen dropdown
-                                    $("#building_id").append('<option>Select a building</option>');
-                                    for(var i = 0; i < building.length; i++){
-                                        $("#building_id").append('<option value="' + building[i]["id"] + '"> building id: ' +building[i]["id"] + '</option>');
-                                    }
-                                }
-                        });
-                    });
+<script>
+        $(document).ready(function() {                    
+                $('#customer_id').change(function() {
+                    console.log("customer_selection----------------")
+                    $.ajax({
+                        url: "<%= update_buildings_path %>",
+                    data: {
+                        customer_id: $('#customer_id').val()
+                    },
+                    dataType: "json",
+                    success: function (response)
+                        {
+                            console.log(response);
+                            var building = response["building"];
+                            $("#building_id").empty(); // Empty the chosen dropdown
+                            $("#building_id").append('<option>Select a building</option>');
+                            for(var i = 0; i < building.length; i++){
+                                $("#building_id").append('<option value="' + building[i]["id"] + '"> building id: ' +building[i]["id"] + '</option>');
+                            }
+                        }
                 });
+            });
+        });
 
-                $(document).ready(function() {                    
-                        $('#building_id').change(function() {
-                            console.log("battery_selection----------------")
-                            $.ajax({
-                                url: "<%= update_batteries_path %>",
-                            data: {
-                                building_id: $('#building_id').val()
-                            },
-                            dataType: "json",
-                            success: function (response)
-                                {
-                                    console.log(response);
-                                    var battery = response["battery"];
-                                    $("#battery_id").empty(); // Empty the chosen dropdown
-                                    $("#battery_id").append('<option>Select a battery</option>');
-                                    for(var i = 0; i < battery.length; i++){
-                                        $("#battery_id").append('<option value="' + battery[i]["id"] + '"> battery id: ' +battery[i]["id"] + '</option>');
-                                    }
-                                }
-                        });
-                    });
+        $(document).ready(function() {                    
+                $('#building_id').change(function() {
+                    console.log("battery_selection----------------")
+                    $.ajax({
+                        url: "<%= update_batteries_path %>",
+                    data: {
+                        building_id: $('#building_id').val()
+                    },
+                    dataType: "json",
+                    success: function (response)
+                        {
+                            console.log(response);
+                            var battery = response["battery"];
+                            $("#battery_id").empty(); // Empty the chosen dropdown
+                            $("#battery_id").append('<option>Select a battery</option>');
+                            for(var i = 0; i < battery.length; i++){
+                                $("#battery_id").append('<option value="' + battery[i]["id"] + '"> battery id: ' +battery[i]["id"] + '</option>');
+                            }
+                        }
                 });
+            });
+        });
 
-                $(document).ready(function() {                    
-                        $('#battery_id').change(function() {
-                            console.log("column_selection----------------")
-                            $.ajax({
-                                url: "<%= update_columns_path %>",
-                            data: {
-                                battery_id: $('#battery_id').val()
-                            },
-                            dataType: "json",
-                            success: function (response)
-                                {
-                                    console.log(response);
-                                    var column = response["column"];
-                                    $("#column_id").empty(); // Empty the chosen dropdown
-                                    $("#column_id").append('<option>None</option>');
-                                    for(var i = 0; i < column.length; i++){
-                                        $("#column_id").append('<option value="' + column[i]["id"] + '"> column id: ' +column[i]["id"] + '</option>');
-                                    }
-                                }
-                        });
-                    });
+        $(document).ready(function() {                    
+                $('#battery_id').change(function() {
+                    console.log("column_selection----------------")
+                    $.ajax({
+                        url: "<%= update_columns_path %>",
+                    data: {
+                        battery_id: $('#battery_id').val()
+                    },
+                    dataType: "json",
+                    success: function (response)
+                        {
+                            console.log(response);
+                            var column = response["column"];
+                            $("#column_id").empty(); // Empty the chosen dropdown
+                            $("#column_id").append('<option>None</option>');
+                            for(var i = 0; i < column.length; i++){
+                                $("#column_id").append('<option value="' + column[i]["id"] + '"> column id: ' +column[i]["id"] + '</option>');
+                            }
+                        }
                 });
-                
-                $(document).ready(function() {                    
-                        $('#column_id').change(function() {
-                            console.log("column_selection----------------")
-                            $.ajax({
-                                url: "<%= update_elevators_path %>",
-                            data: {
-                                column_id: $('#column_id').val()
-                            },
-                            dataType: "json",
-                            success: function (response)
-                                {
-                                    console.log(response);
-                                    var elevator = response["elevator"];
-                                    $("#elevator_id").empty(); // Empty the chosen dropdown
-                                    $("#elevator_id").append('<option>None</option>');
-                                    for(var i = 0; i < elevator.length; i++){
-                                        $("#elevator_id").append('<option value="' + elevator[i]["id"] + '"> elevator id: ' +elevator[i]["id"] + '</option>');
-                                    }
-                                }
-                        });
-                    });
-                });  
-
-                
-            </script>
+            });
+        });
+        
+        $(document).ready(function() {                    
+                $('#column_id').change(function() {
+                    console.log("column_selection----------------")
+                    $.ajax({
+                        url: "<%= update_elevators_path %>",
+                    data: {
+                        column_id: $('#column_id').val()
+                    },
+                    dataType: "json",
+                    success: function (response)
+                        {
+                            console.log(response);
+                            var elevator = response["elevator"];
+                            $("#elevator_id").empty(); // Empty the chosen dropdown
+                            $("#elevator_id").append('<option>None</option>');
+                            for(var i = 0; i < elevator.length; i++){
+                                $("#elevator_id").append('<option value="' + elevator[i]["id"] + '"> elevator id: ' +elevator[i]["id"] + '</option>');
+                            }
+                        }
+                });
+            });
+        });         
+    </script>
+            
             
 
       
