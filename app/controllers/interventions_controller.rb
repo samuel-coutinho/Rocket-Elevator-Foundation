@@ -85,7 +85,7 @@ end
 
 def create_ticket_zendesk
   client = ZendeskAPI::Client.new do |config|
-   config.url = ENV[ZENDESK_URL]
+   config.url = ENV["ZENDESK_URL"]
    config.username = ENV["ZENDESK_USERNAME"]
    config.token = ENV["ZENDESK_TOKEN"]
   end  
