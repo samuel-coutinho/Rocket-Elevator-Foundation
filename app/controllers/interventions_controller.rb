@@ -38,16 +38,30 @@ class InterventionsController < ApplicationController
     @intervention.column_id = @column.id
     @intervention.elevator_id = @elevator.id    
 
-    @intervention.save
-    create_ticket_zendesk  
+      respond_to do |format|
+        if @intervention.save
+          create_ticket_zendesk  
+          format.html do
+            redirect_to new_path_url, notice: 'Quote created successfully!'
+          end
+          format.json { render json: @intervention.to_json }
+        else
+          format.html { render 'new'} ## Specify the format in which you are rendering "new" page
+          format.json { render json: @intervention.errors } ## You might want to specify a json format as well
+        end
+      end    
+
+
+    # @intervention.save
+    # create_ticket_zendesk  
     
-    respond_to do |format|
-      if @intervention.save
-        format.html do
-          redirect_to new_path_url, notice: 'Quote created successfully!'
-        end              
-      end
-    end
+    # respond_to do |format|
+    #   if @intervention.save
+    #     format.html do
+    #       redirect_to new_path_url, notice: 'Quote created successfully!'
+    #     end              
+    #   end
+    # end
   end
 
   def update_buildings
@@ -111,7 +125,7 @@ end
 
 # end
 
-private
+private 
 
   def intervention_params
     params.permit(
