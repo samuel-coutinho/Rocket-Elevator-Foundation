@@ -24,10 +24,8 @@
                     <%= collection_select(:building, :id, @buildings, :id, :id, include_blank: true) %>
 
                     <%= label_tag(:id, "Select a Battery:") %>
-                    <%= collection_select(:battery, :id, @batteries, :id, :id, include_blank: true) %>
-                                
-            </div>
-            <div class="col-sm-6">
+                    <%= collection_select(:battery, :id, @batteries, :id, :id, include_blank: true) %>                                
+           
                     <%= label_tag(:id, "Select a Column:") %>
                     <%= collection_select(:column, :id, @columns, :id, :id, prompt: "None", include_blank: true) %>
                                 
