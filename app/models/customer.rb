@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
   belongs_to :user, optional: true
   accepts_nested_attributes_for :buildings
 
-  after_commit :dropbox_API
+  #after_commit :dropbox_API
 
   def custom_label_method
     "#{User.find(user_id).first_name} #{User.find(user_id).last_name}"
