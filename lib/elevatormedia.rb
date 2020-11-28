@@ -2,7 +2,8 @@ module ElevatorMedia
     class Streamer
         
 
-        def self.getContent           
+        def self.getContent
+            html = ""           
             
         end
     end
