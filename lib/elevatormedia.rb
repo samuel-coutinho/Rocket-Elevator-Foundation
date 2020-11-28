@@ -1,9 +1,8 @@
 module ElevatorMedia
-    class Streamer
-        
+    class Streamer        
 
         def self.getContent
-            html = ""           
+            html = "<div>  </div>"          
             
         end
     end
