@@ -39,7 +39,6 @@ gem 'dropbox_api'
 #BOOTSTRAP
 gem 'bootstrap', '~> 4.4.1'
 
-
 # USER RELATED
 gem 'devise'
 gem 'simple_form'
@@ -127,7 +126,6 @@ group :production do
   # you probably don't want this for :test or :development
 end
 
-
 #twilio gem
 gem "twilio-ruby"
 
@@ -136,7 +134,6 @@ gem "sendgrid-ruby"
 
 gem "zendesk_api"
 
-
 #Slack API
 gem "slack-notifier"
 
@@ -144,3 +141,10 @@ gem 'formtastic', '~> 3.0'
 
 gem 'ed25519'
 gem 'bcrypt_pbkdf'
+
+# Run against the latest stable release
+group :development, :test do
+  gem 'rspec-rails', '~> 4.0.1'
+end
+
+gem 'owlcarousel-rails'
