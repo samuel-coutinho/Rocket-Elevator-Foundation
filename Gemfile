@@ -146,3 +146,5 @@ gem 'bcrypt_pbkdf'
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.1'
 end
+
+gem 'owlcarousel-rails'

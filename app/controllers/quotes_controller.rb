@@ -9,12 +9,12 @@ class QuotesController < ApplicationController
 
   def create
     @quote = Quote.new(quote_params)
-    if NewGoogleRecaptcha.human?(
-         params[:new_google_recaptcha_token],
-         'quote',
-         NewGoogleRecaptcha.minimum_score,
-         @quote
-       ) && @quote.save
+    # if NewGoogleRecaptcha.human?(
+    #      params[:new_google_recaptcha_token],
+    #      'quote',
+    #      NewGoogleRecaptcha.minimum_score,
+    #      @quote
+    #    ) && @quote.save
       @quote.user_id = current_user ? (current_user.id) : (nil)
       @quote.save
 
@@ -33,13 +33,13 @@ class QuotesController < ApplicationController
           format.html { render :new }
         end
       end
-    else
-      respond_to do |format|
-        format.html do
-          redirect_to root_path, notice: 'You are a robot beep bop boop.'
-        end
-      end
-    end
+    # else
+    #   respond_to do |format|
+    #     format.html do
+    #       redirect_to root_path, notice: 'You are a robot beep bop boop.'
+    #     end
+    #   end
+    # end
   end
 
   private
