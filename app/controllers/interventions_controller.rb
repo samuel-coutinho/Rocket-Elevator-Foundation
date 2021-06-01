@@ -14,8 +14,7 @@ class InterventionsController < ApplicationController
   def show   
   end
 
-  def create  
-
+  def create
     @employee = Employee.new
     @customer = Customer.new 
     @building = Building.new    
@@ -40,7 +39,7 @@ class InterventionsController < ApplicationController
 
       respond_to do |format|
         if @intervention.save
-          create_ticket_zendesk  
+          #create_ticket_zendesk  
           format.html do
             redirect_to new_path_url, notice: 'Quote created successfully!'
           end
@@ -49,8 +48,7 @@ class InterventionsController < ApplicationController
           format.html { render 'new'} ## Specify the format in which you are rendering "new" page
           format.json { render json: @intervention.errors } ## You might want to specify a json format as well
         end
-      end    
-
+      end
 
     # @intervention.save
     # create_ticket_zendesk  
@@ -97,14 +95,14 @@ class InterventionsController < ApplicationController
   end  
 end
 
-def create_ticket_zendesk
-  client = ZendeskAPI::Client.new do |config|
-    config.url = ENV["ZENDESK_URL"]
-    config.username = ENV["ZENDESK_USERNAME"]
-    config.token = ENV["ZENDESK_TOKEN"]
-  end  
-  ZendeskAPI::Ticket.create!(client, :subject => "New intervention request", :comment => @intervention.to_json, :submitter_id => @intervention.customer_id, :type => "problem")
-end
+# def create_ticket_zendesk
+#   client = ZendeskAPI::Client.new do |config|
+#     config.url = ENV["ZENDESK_URL"]
+#     config.username = ENV["ZENDESK_USERNAME"]
+#     config.token = ENV["ZENDESK_TOKEN"]
+#   end  
+#   ZendeskAPI::Ticket.create!(client, :subject => "New intervention request", :comment => @intervention.to_json, :submitter_id => @intervention.customer_id, :type => "problem")
+# end
 
 
 # def create_ticket_zendesk
@@ -126,7 +124,6 @@ end
 # end
 
 private 
-
   def intervention_params
     params.permit(
       :customer_id,

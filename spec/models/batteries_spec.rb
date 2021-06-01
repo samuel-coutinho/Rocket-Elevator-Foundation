@@ -1,0 +1,24 @@
+# one:
+#   building_id: 1
+#   battery_id: 1
+#   type: 
+#   status: MyString
+#   employee_id: 1
+#   date_of_commissioning: 2020-10-19
+#   date_of_last_inspection: 2020-10-19
+#   certificate_of_operations: MyString
+#   information: MyString
+#   notes: MyString
+
+
+# two:
+#   building_id: 1
+#   battery_id: 1
+#   type: 
+#   status: MyString
+#   employee_id: 1
+#   date_of_commissioning: 2020-10-19
+#   date_of_last_inspection: 2020-10-19
+#   certificate_of_operations: MyString
+#   information: MyString
+#   notes: MyString
