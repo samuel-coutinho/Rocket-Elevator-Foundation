@@ -42,7 +42,7 @@
             </li>
             <% if user_signed_in? %>
               <li><!-- Interventions Form -->
-                <%= link_to 'INTERVENTION FORM', "/interventions/new" %>
+                <%= link_to 'Interventions', "/interventions/new" %>
               </li>
             <% end %>
             <% if can? :read, Quote %>

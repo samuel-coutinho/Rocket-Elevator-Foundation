@@ -1,29 +1,35 @@
 require "rails_helper"
 
 RSpec.describe InterventionsController, :type => :controller do    
-  render_views
-  user1 = User.new
+  render_views  
 
   describe "GET new" do
-    it "has a interventions related heading" do
-        sign_in user1
-        get :new
-        expect(response.status).to eq(200)
-    end
-  end
-end
-
-RSpec.describe InterventionsController, :type => :controller do
-  describe "index" do
-    it "renders the index template" do
+    it "renders the interventions/index template" do      
       get :new
+      expect(response.status).to eq(200)
       expect(response).to render_template("new")
-      expect(response.body).to eq ""
+    end    
+  end
+
+  describe "responds to" do
+    it "responds to html by default" do
+      
+      post :create, :params => { :intervention_params => {customer_id: customer.id,
+      employee_id: employee.id,
+      battery_id: battery.id,                        
+      column_id: column.id,
+      elevator_id: elevator.id,
+      building_id: building.id,
+      author: employee.id,     
+      result: nil,
+      report: "text",
+      status: nil,}}
+      expect(response.content_type).to eq "text/html"
     end
-    it "renders the interventions/index template" do
-      get :new
-      expect(response).to render_template("interventions/new")
-      expect(response.body).to eq ""
-    end
+
+    # it "responds to custom formats when provided in the params" do
+    #   post :create, :params => { :widget => { :name => "Any Name" }, :format => :json }
+    #   expect(response.content_type).to eq "application/json"
+    # end
   end
 end
